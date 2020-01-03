@@ -1,0 +1,120 @@
+slots:
+  location:
+    type: text
+  valid_location:
+    type: categorical
+    values:
+    - "yes"
+    - "no"
+  cuisine:
+    type: text
+  price:
+    type: float
+  emailid:
+    type: text
+  sendemail:
+    type: bool
+
+
+entities:
+- location
+- cuisine
+- price
+- emailid
+- sendemail
+- valid_location
+
+
+intents:
+ - greet
+ - affirm
+ - deny
+ - goodbye
+ - thankyou
+ - restaurant_search
+ - email_restaurantdetails
+ - try_again
+ - did_not_understand
+ - please_talk_to_me
+ 
+
+templates:
+  utter_greet:
+    - "hey there! How may i help you"
+    - "Hi, How can I help you!"
+    - "Hey, How is it going. How May I help you Today"
+  utter_goodbye:
+    - "goodbye :("
+    - "Bye-bye"
+    - "Have a great day! Bye."
+  utter_default:
+    - "I'm sorry I did not understand. Can you please tell again?"
+  utter_ask_cuisine: 
+    - text: "what kind of cuisine would you like?"
+      buttons:
+      - title: "Chinese"
+        payload: "Chinese"
+      - title: "Mexican"
+        payload: "Mexican"  
+      - title: "Italian"
+        payload: "Italian"
+      - title: "American"
+        payload: "American"  
+      - title: "South Indian"
+        payload: "South Indian"
+      - title: "North Indian"
+        payload: "North Indian"
+  utter_ask_howcanhelp:
+    - "how can I help you?"
+  utter_please_talk_to_me:
+    - "Please talk to me, I am your friendly Foodie bot!"
+  utter_ask_location:
+    - "In what location?"
+  utter_ask_price_range:
+    - text: "Whats the average budget for two people?"
+      buttons:
+      - title: "Lesser than Rs. 300"
+        payload: "<300"
+      - title: "Rs. 300 to 700"
+        payload: "300-700"
+      - title: "More than 700"
+        payload: ">700"
+  utter_location_not_operable:
+    - "Sorry, we don’t operate in this city. Can you please specify some other location? \n" 
+  utter_location_not_found:
+    - "Sorry, didn’t find any such location. Can you please tell again? \n"
+  utter_try_again:
+    - "Can you please tell me your location again ?"
+  utter_ask_sendemail:
+    - "Should I send you details of all the restaurants on email?"
+  utter_ask_emailid:
+    - "To what email id should I send it to?"
+  utter_emailsent:
+    - "Sent. Bon Appetit!"
+    - "Email Sent, Bon Apetit!"
+    - "Sent. Thank you"
+    - "Sent. Bye"
+    - "Sent. Good Bye"
+  utter_did_not_understand:
+    - "I'm sorry, I did not understand :("
+  
+actions:
+- utter_greet
+- utter_goodbye
+- utter_default
+- utter_did_not_understand
+- utter_ask_howcanhelp
+- utter_please_talk_to_me
+- utter_ask_location
+- utter_try_again
+- utter_location_not_operable
+- utter_location_not_found
+- utter_ask_cuisine
+- utter_ask_price_range
+- utter_ask_sendemail
+- utter_ask_emailid
+- utter_emailsent
+- actions.ActionSearchRestaurants
+- actions.ActionValidateLocation
+- actions.ActionSendEmail 
+- actions.ActionRestarted
